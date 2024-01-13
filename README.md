@@ -16,7 +16,7 @@ The application uses the classes from the countries.api library, interfacing wit
 
 ## Usage
 
-To run the application, ensure you have Java installed and execute the JAR file. The GUI provides buttons for each feature mentioned, allowing the user to interact with the application seamlessly.
+The GUI provides buttons for each feature mentioned, allowing the user to interact with the application seamlessly.
 
 
 ## Start menu
