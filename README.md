@@ -20,19 +20,25 @@ The GUI provides buttons for each feature mentioned, allowing the user to intera
 
 
 ## Start menu
-![image](https://github.com/DimitrisManolopoulos/Countries-App/assets/135516820/72e9a3b5-49e8-43ab-b0e5-948e23eed531)
+![image](https://github.com/DimitrisManolopoulos/Countries-App/assets/135516820/e154a3be-8532-47ac-865c-64bb9db5e096)
 
 ## Clicking the first option to show all the countries, each country is a node in a list.
 ![image](https://github.com/DimitrisManolopoulos/Countries-App/assets/135516820/94557f61-1cc3-460e-9ce1-10dbeef6b067)
 
-## Clicking the second option to show the country of Greece
-![image](https://github.com/DimitrisManolopoulos/Countries-App/assets/135516820/da5eb6b7-e6a5-4d6f-abf5-7ae811f82901)
+## Clicking the second option, the user can search for a country of his choice. For an example he can write "usa".
+![image](https://github.com/DimitrisManolopoulos/Countries-App/assets/135516820/3842cf4b-cc63-4f7a-a021-c6fe9876c810)
+![image](https://github.com/DimitrisManolopoulos/Countries-App/assets/135516820/603b8aa2-6a41-4daa-b93c-fbff3e7bbe75)
 
-## Clicking the third option to show the countries that speak Spanish.
-![image](https://github.com/DimitrisManolopoulos/Countries-App/assets/135516820/0031f314-e3d4-46ec-96d2-cd1cf764a4ac)
 
-## Clicking the forth option to show the countries using the Euro (EUR).
-![image](https://github.com/DimitrisManolopoulos/Countries-App/assets/135516820/a00fca92-50f5-4190-9473-06b427246f17)
+## Clicking the third option to show the countries that speak a specific language. For example he can write "Turkish".
+![image](https://github.com/DimitrisManolopoulos/Countries-App/assets/135516820/bc268912-e5c4-48d2-81f7-86a1bb3571b1)
+![image](https://github.com/DimitrisManolopoulos/Countries-App/assets/135516820/3ff50c4f-ab3e-4c17-854e-5130396aa6b9)
 
-## Clicking the fifth option to show the five most recent searches that are also reusable.
-![image](https://github.com/DimitrisManolopoulos/Countries-App/assets/135516820/be9ed5f0-3fb5-42dd-a387-ffd901d01206)
+
+## Clicking the forth option to show the countries that use a specific currency. For example he can write "gbp".
+![image](https://github.com/DimitrisManolopoulos/Countries-App/assets/135516820/f259cc96-a96d-47bc-99f3-85733b47b88e)
+![image](https://github.com/DimitrisManolopoulos/Countries-App/assets/135516820/f9a26641-815f-4286-aaf0-497188830bcd)
+
+
+## Clicking the fifth option to show the five most recent searches that are also reusable with the search terms for each search he made.
+![image](https://github.com/DimitrisManolopoulos/Countries-App/assets/135516820/d0763e57-c959-4c8a-933e-78d1b73d67c4)
