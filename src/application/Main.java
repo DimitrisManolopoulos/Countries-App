@@ -6,15 +6,24 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class Main extends Application {
+	
+	class SearchInfo {
+	    int option;
+	    String searchTerm;
 
-    // Ουρά για τις πρόσφατες αναζητήσεις
-    private Queue<Integer> recentSearches = new LinkedList<>();
+	    public SearchInfo(int option, String searchTerm) {
+	        this.option = option;
+	        this.searchTerm = searchTerm;
+	    }
+	}
+    private Queue<SearchInfo> recentSearches = new LinkedList<>();
 
     @Override
     public void start(Stage primaryStage) {
@@ -22,16 +31,16 @@ public class Main extends Application {
         
         // Δημιουργία κουμπιών
         Button button1 = new Button("Όλες οι χώρες");
-        Button button2 = new Button("Αναζήτηση Ελλάδας με χρήση του ονόματός της");
-        Button button3 = new Button("Χώρες που μιλούν Ισπανικά");
-        Button button4 = new Button("Χώρες που χρησιμοποιούν το ευρώ");
+        Button button2 = new Button("Αναζήτηση χώρας με χρήση του ονόματός της");
+        Button button3 = new Button("Αναζήτηση χωρών που μιλούν συγκεκριμένες γλώσσες");
+        Button button4 = new Button("Αναζήτηση χωρών που χρησιμοποιούν συγκεκριμένο νόμισμα");
         Button button5 = new Button("5 τελευταίες αναζητήσεις");
 
         // Προσθήκη λειτουργιών για τα κουμπιά
-        button1.setOnAction(e -> showAllCountries(primaryStage, 1));
-        button2.setOnAction(e -> showAllCountries(primaryStage, 2));
-        button3.setOnAction(e -> showAllCountries(primaryStage, 3));
-        button4.setOnAction(e -> showAllCountries(primaryStage, 4));
+        button1.setOnAction(e -> showAllCountries(primaryStage, 1, null));
+        button2.setOnAction(e -> showSearchDialog(primaryStage, 2,"Αναζήτηση χώρας", "Εισάγετε το όνομα της χώρας στα αγγλικά (πχ. Greece ή Spain κλπ):"));
+        button3.setOnAction(e -> showSearchDialog(primaryStage, 3, "Αναζήτηση γλώσσας", "Εισάγετε τη γλώσσα στα αγγλικά (πχ. Greek ή Spanish κλπ"));
+        button4.setOnAction(e -> showSearchDialog(primaryStage, 4, "Αναζήτηση νομίσματος", "Εισάγετε το νόμισμα (πχ. EU ή eu ή eur ή euro ή aud κλπ:"));
         button5.setOnAction(e -> showRecentSearches());
 
         // Δημιουργία και ρύθμιση του layout
@@ -54,62 +63,65 @@ public class Main extends Application {
 
     // Μέθοδος για την εμφάνιση των πρόσφατων αναζητήσεων (5η επιλογή)
     private void showRecentSearches() {
-        // Δημιουργία νέου layout για τις πρόσφατες αναζητήσεις
         VBox recentSearchesLayout = new VBox(10);
-        // Αν δεν υπάρχει καμία αναζήτηση
+
         if (recentSearches.isEmpty()) {
             Label label = new Label();
             label.setText("Δεν υπάρχει καμία αναζήτηση");
-            // Προσθήκη του κουμπιού στο layout
             recentSearchesLayout.getChildren().add(label);
         } else {
-            // Εμφάνιση κάθε πρόσφατης αναζήτησης ως ένα κουμπί
-        	for (Integer search : recentSearches) {
-                System.out.println(search);
-
+            for (SearchInfo searchInfo : recentSearches) {
                 Button button = new Button();
-                // Ορισμός κειμένου και λειτουργιών για κάθε κουμπί
-                if (search == 1) {
-                    button.setText("Όλες οι χώρες");
-                } else if (search == 2) {
-                    button.setText("Αναζήτηση Ελλάδας με χρήση του ονόματός της");
-                } else if (search == 3) {
-                    button.setText("Χώρες που μιλούν Ισπανικά");
-                } else if (search == 4) {
-                    button.setText("Χώρες που χρησιμοποιούν το νόμισμα EUR");
-                } else {
-                    button.setText("5 τελευταίες αναζητήσεις");
+
+                switch (searchInfo.option) {
+                    case 1:
+                        button.setText("Όλες οι χώρες");
+                        break;
+                    case 2:
+                        button.setText("Αναζήτηση " + searchInfo.searchTerm + " με χρήση του ονόματός της");
+                        break;
+                    case 3:
+                        button.setText("Χώρες που μιλούν " + searchInfo.searchTerm);
+                        break;
+                    case 4:
+                        button.setText("Χώρες που χρησιμοποιούν το " + searchInfo.searchTerm);
+                        break;
+                    default:
+                        button.setText("5 τελευταίες αναζητήσεις: " + searchInfo.searchTerm);
+                        break;
                 }
 
-                // Ορισμός της λειτουργίας κάθε κουμπιού
-                button.setOnAction(e -> showAllCountries(new Stage(), search));
+                button.setOnAction(e -> showAllCountries(new Stage(), searchInfo.option, searchInfo.searchTerm));
 
-                // Προσθήκη του κουμπιού στο layout
                 recentSearchesLayout.getChildren().add(button);
             }
         }
-        
 
-        // Δημιουργία νέας σκηνής
         Scene recentSearchesScene = new Scene(recentSearchesLayout, 300, 200);
-
-        // Δημιουργία νέου παραθύρου
         Stage recentSearchesStage = new Stage();
         recentSearchesStage.setTitle("5 Πρόσφατες Αναζητήσεις");
         recentSearchesStage.setScene(recentSearchesScene);
-
-        // Εμφάνιση του παραθύρου
         recentSearchesStage.show();
     }
 
+    
+    private void showSearchDialog(Stage primaryStage, int option, String title, String prompt) {
+        TextInputDialog dialog = new TextInputDialog();
+        dialog.setTitle(title);
+        dialog.setHeaderText(null);
+        dialog.setContentText(prompt);
+
+        dialog.showAndWait().ifPresent(result -> showAllCountries(primaryStage, option, result));
+    }
+    
     // Μέθοδος για την εμφάνιση όλων των χωρών
-    private void showAllCountries(Stage primaryStage, int option) {
+    private void showAllCountries(Stage primaryStage, int option, String SearchTerm) {
         try {
             // Δημιουργία νέας σκηνής που περιέχει τις χώρες
-            CountriesResult countriesResult = new CountriesResult(option);
+            CountriesResult countriesResult = new CountriesResult(option,SearchTerm);
 
             // Προσθήκη της επιλογής στις πρόσφατες αναζητήσεις
-            recentSearches.offer(option);
+            recentSearches.offer(new SearchInfo(option, SearchTerm));
 
             // Εάν υπερβαίνουν τον αριθμό των 5, αφαίρεση της παλαιότερης
             if (recentSearches.size() > 5) {

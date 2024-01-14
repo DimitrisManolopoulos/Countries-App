@@ -11,7 +11,7 @@ import com.example.CountryLibrary;
 public class CountriesResult extends VBox {
 
 	
-    public CountriesResult(int option) {
+    public CountriesResult(int option, String SearchTerm) {
         // Δημιουργία της λίστας για την εμφάνιση των χωρών
         ListView<String> countryListView = new ListView<>();        
         List<Country> countries;
@@ -26,21 +26,19 @@ public class CountriesResult extends VBox {
                 }
             }else if (option == 2) {
             	// Καλώ την μέθοδο της βιβλιοθήκης getCountryByName και αποθηκεύω τα αποτελέσματα στο country
-                Country country = countryLibrary.getCountryByName("Greece");
+                Country country = countryLibrary.getCountryByName(SearchTerm);
                 // Προσθέτω την χώρα στο listView
                 countryListView.getItems().add(country.toString());
             } else if (option == 3) {
-                String language = "Spanish";
             	// Καλώ την μέθοδο της βιβλιοθήκης getCountriesByLanguage και αποθηκεύω τα αποτελέσματα στο countries
-                countries = countryLibrary.getCountriesByLanguage(language);
+                countries = countryLibrary.getCountriesByLanguage(SearchTerm);
                 for (Country country : countries) {
                     // Προσθέτω την κάθε χώρα στο listView
                     countryListView.getItems().add(country.toString());
                 }
             } else if (option == 4) {
-                String currency = "EUR";
             	// Καλώ την μέθοδο της βιβλιοθήκης getCountriesByCurrency και αποθηκεύω τα αποτελέσματα στο countries
-                countries = countryLibrary.getCountriesByCurrency(currency);
+                countries = countryLibrary.getCountriesByCurrency(SearchTerm);
                 for (Country country : countries) {
                     // Προσθέτω την κάθε χώρα στο listView
                     countryListView.getItems().add(country.toString());
