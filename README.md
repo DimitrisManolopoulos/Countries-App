@@ -5,9 +5,9 @@
 This Java application utilizes the countries.jar library, which is integrated into the project. The application is built with JavaFX and provides the following features:
 
 1. Retrieve a list of all countries.
-2. Retrieve information about Greece by its name.
-3. Retrieve a list of countries that speak Spanish.
-4. Retrieve a list of countries using the Euro (EUR).
+2. Retrieve information about a country of his choice.
+3. Retrieve a list of countries that speak a specific language.
+4. Retrieve a list of countries using a specific currency.
 5. Save the five most recent searches, allowing the user to reuse them easily with a simple click.
 
 ## Implementation
