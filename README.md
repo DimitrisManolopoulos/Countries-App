@@ -2,6 +2,7 @@
 
 # World Countries Information App
 Versions that were used: jdk-20 , javafx-sdk-21.0.1
+
 This Java application utilizes the countries.jar library, which is integrated into the project. The application is built with JavaFX and provides the following features:
 
 1. Retrieve a list of all countries.
